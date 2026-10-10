@@ -1,11 +1,23 @@
+import Navbar from './components/Navbar.jsx'
+
 export default function App() {
   return (
-    <main className="min-h-screen bg-[#F7F3ED] px-6 py-12 text-[#18344B]">
-      <div className="mx-auto max-w-7xl">
-        <h1 className="text-3xl font-semibold">
-          Rumah Karsa
-        </h1>
-      </div>
-    </main>
+    <>
+      <Navbar />
+
+      <main id="home">
+        <section className="px-6 py-12">
+          <div className="mx-auto max-w-7xl">
+            <h1 className="text-3xl font-semibold">
+              Selamat Datang di Rumah Karsa
+            </h1>
+
+            <p className="mt-3">
+              Temukan hunian yang sesuai dengan kebutuhan Anda.
+            </p>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }
