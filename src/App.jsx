@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar.jsx'
 import Visit from './components/Visit.jsx'
+import Contact from './components/Contact.jsx'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         </section>
       </main>
       <Visit />
+      <Contact />
     </>
   )
 }

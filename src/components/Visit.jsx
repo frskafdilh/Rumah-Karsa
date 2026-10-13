@@ -17,7 +17,7 @@ function Visit() {
           <h2 className="mt-2 text-3xl font-bold text-[color:var(--navy)]">
             Jadwalkan Kunjungan Property
           </h2>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-[color:var(--navy)]/70">
             Isi formulir berikut untuk menjadwalkan kunjungan ke properti yang
             Anda minati. Tim kami akan segera menghubungi Anda.
           </p>
