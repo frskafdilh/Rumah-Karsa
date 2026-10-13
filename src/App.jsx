@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar.jsx'
+import About from './components/About.jsx'
 
 export default function App() {
   return (
@@ -17,6 +18,8 @@ export default function App() {
             </p>
           </div>
         </section>
+
+        <About/>
       </main>
     </>
   )
