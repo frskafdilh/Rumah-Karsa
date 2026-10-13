@@ -1,70 +1,50 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 
 const links = [
   { label: 'Beranda', href: '#home' },
   { label: 'Properti', href: '#properties' },
   { label: 'Tentang', href: '#about' },
-<<<<<<< HEAD
-  { label: 'Simulasi', href: '#calculator' },
-=======
   { label: 'Simulasi KPR', href: '#calculator' },
->>>>>>> origin/main
   { label: 'Kontak', href: '#contact' },
 ]
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  function toggleMenu() {
-    setMenuOpen((open) => !open)
-  }
-
   function closeMenu() {
     setMenuOpen(false)
   }
 
   return (
-<<<<<<< HEAD
-    <header className="bg-var(--cream) text-var(--navy)">
-=======
     <header className="bg-(--cream) text-(--navy)">
->>>>>>> origin/main
       <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-6 py-4">
-        <a href="#home" className="text-xl font-semibold text-inherit no-underline" onClick={closeMenu}>
+        <a
+          href="#home"
+          className="text-xl font-semibold text-inherit no-underline"
+          onClick={closeMenu}
+        >
           Rumah Karsa
         </a>
 
         <button
           type="button"
-<<<<<<< HEAD
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-var(--navy)/20 text-xl md:hidden"
-=======
           className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-(--navy)/20 text-xl md:hidden"
->>>>>>> origin/main
           aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'}
           aria-controls="primary-navigation"
           aria-expanded={menuOpen}
-          onClick={toggleMenu}
+          onClick={() => setMenuOpen((open) => !open)}
         >
           <span aria-hidden="true">{menuOpen ? '×' : '☰'}</span>
         </button>
 
         <div
-            id="primary-navigation"
-            className={`
-                ${menuOpen ? 'flex' : 'hidden'}
-                w-full flex-col gap-5 pt-5
-                md:flex md:w-auto md:flex-row md:items-center md:gap-6 md:pt-0
-            `}
+          id="primary-navigation"
+          className={`${menuOpen ? 'flex' : 'hidden'} w-full flex-col gap-5 pt-5 md:flex md:w-auto md:flex-row md:items-center md:gap-6 md:pt-0`}
         >
           <ul className="m-0 flex list-none flex-col gap-4 p-0 md:flex-row md:items-center md:gap-6">
             {links.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="nav-link"
-                  onClick={closeMenu}
-                >
+                <a href={link.href} className="nav-link" onClick={closeMenu}>
                   {link.label}
                 </a>
               </li>
