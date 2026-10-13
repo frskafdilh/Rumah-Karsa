@@ -4,7 +4,11 @@ const links = [
   { label: 'Beranda', href: '#home' },
   { label: 'Properti', href: '#properties' },
   { label: 'Tentang', href: '#about' },
+<<<<<<< HEAD
   { label: 'Simulasi', href: '#calculator' },
+=======
+  { label: 'Simulasi KPR', href: '#calculator' },
+>>>>>>> origin/main
   { label: 'Kontak', href: '#contact' },
 ]
 
@@ -20,7 +24,11 @@ export default function Navbar() {
   }
 
   return (
+<<<<<<< HEAD
     <header className="bg-var(--cream) text-var(--navy)">
+=======
+    <header className="bg-(--cream) text-(--navy)">
+>>>>>>> origin/main
       <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-6 py-4">
         <a href="#home" className="text-xl font-semibold text-inherit no-underline" onClick={closeMenu}>
           Rumah Karsa
@@ -28,7 +36,11 @@ export default function Navbar() {
 
         <button
           type="button"
+<<<<<<< HEAD
           className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-var(--navy)/20 text-xl md:hidden"
+=======
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-(--navy)/20 text-xl md:hidden"
+>>>>>>> origin/main
           aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'}
           aria-controls="primary-navigation"
           aria-expanded={menuOpen}
