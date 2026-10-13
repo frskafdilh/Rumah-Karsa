@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar.jsx'
+import Visit from './components/Visit.jsx'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           </div>
         </section>
       </main>
+      <Visit />
     </>
   )
 }
