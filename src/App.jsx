@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar.jsx'
 import About from './components/About.jsx'
+import Calculator from './components/Calculator.jsx'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         </section>
 
         <About/>
+        <Calculator/>
       </main>
     </>
   )
