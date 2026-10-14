@@ -1,4 +1,4 @@
-
+import logoImg from "../assets/logo.png";
 function Footer() {
 return (
     <footer className="rk-footer" id="footer">
@@ -8,11 +8,13 @@ return (
 
         <div className="rk-footer-brand">
             <div className="rk-brand-heading">
-            <img
-                src="/logo.png"
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-[#E8DED0] bg-[#F7F3ED] p-2">
+                <img
+                src={logoImg}
                 alt="Logo Rumah Karsa"
-                className="rk-footer-logo"
-            />
+                className="h-full w-full object-contain"
+                />
+            </div>
 
             <div>
                 <h3>Rumah Karsa</h3>
