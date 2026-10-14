@@ -6,6 +6,7 @@ import About from "./components/About.jsx";
 import Calculator from "./components/Calculator.jsx";
 import Visit from "./components/Visit.jsx";
 import Contact from "./components/Contact.jsx";
+import Footer from "./components/Footer.jsx";
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
         <Visit />
         <Contact />
       </main>
+
+      <Footer />
     </>
   );
 }
