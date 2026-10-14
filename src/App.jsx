@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar.jsx";
 import PropertySection from "./components/PropertySection.jsx";
+import Footer from "./components/Footer.jsx";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <main>
         <PropertySection />
       </main>
+      <Footer />
     </>
   );
 }
