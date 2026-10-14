@@ -12,33 +12,87 @@ const formatAngka = (angka) => new Intl.NumberFormat('id-ID').format(angka)
 
 const hanyaAngka = (teks) => teks.replace(/\D/g, '')
 
+const formatRupiah = (angka) =>
+  new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    maximumFractionDigits: 0,
+  }).format(angka)
+
+function hitungCicilan(pokok, bungaTahunan, bulan) {
+  const i = bungaTahunan / 12 / 100
+  if (i === 0) return pokok / bulan
+  return (pokok * i) / (1 - Math.pow(1 + i, -bulan))
+}
+
 const kelasInput =
   'w-full rounded-lg border border-white/15 bg-white/10 px-4 py-3 text-sm text-(--cream) ' +
   'placeholder:text-(--cream)/50 focus:border-(--caramel) focus:ring-2 focus:ring-(--caramel)/40'
 
 export default function Calculator() {
-  const [harga, setHarga] = useState('') 
-  const [dpPersen, setDpPersen] = useState('') 
-  const [tenor, setTenor] = useState('') 
+  const [harga, setHarga] = useState('')
+  const [dpPersen, setDpPersen] = useState('')
+  const [tenor, setTenor] = useState('')
+  const [error, setError] = useState('')
+  const [hasil, setHasil] = useState(null)
 
   const hargaAngka = Number(harga) || 0
   const dpRupiah = Math.round((hargaAngka * (Number(dpPersen) || 0)) / 100)
 
+  function resetHasil() {
+    setHasil(null)
+    setError('')
+  }
+
   function handleHargaChange(e) {
     setHarga(hanyaAngka(e.target.value).slice(0, MAKS_DIGIT_HARGA))
+    resetHasil()
   }
 
   function handleDpPersenChange(e) {
     const bersih = hanyaAngka(e.target.value)
+    resetHasil()
     if (bersih === '') {
       setDpPersen('')
       return
     }
-    setDpPersen(String(Math.min(Number(bersih), DP_MAKSIMAL)))
+   setDpPersen(String(Math.min(Number(bersih), DP_MAKSIMAL)))
+  }
+
+  function handleTenorChange(e) {
+    setTenor(e.target.value)
+    resetHasil()
+  }
+
+  function tampilkanError(pesan) {
+    setHasil(null)
+    setError(pesan)
   }
 
   function handleHitung(e) {
     e.preventDefault()
+    if (hargaAngka <= 0) {
+      return tampilkanError('Masukkan harga properti lebih dari Rp 0.')
+    }
+    if (!tenor) {
+      return tampilkanError('Pilih jumlah bulan cicilan terlebih dahulu.')
+    }
+    const pokok = hargaAngka - dpRupiah
+    if (pokok <= 0) {
+      return tampilkanError('Uang muka harus lebih kecil dari harga properti.')
+    }
+
+    const bulan = Number(tenor)
+    const cicilanPerBulan = Math.round(hitungCicilan(pokok, BUNGA_TAHUNAN, bulan))
+    const totalPembayaran = cicilanPerBulan * bulan
+
+    setError('')
+    setHasil({
+      cicilanPerBulan,
+      totalPembayaran,
+      pokok,
+      totalBunga: totalPembayaran - pokok,
+    })
   }
 
   return (
@@ -104,7 +158,7 @@ export default function Calculator() {
                 </div>
                 <div>
                   <label htmlFor="dp-rupiah" className="sr-only">
-                    DP dalam rupiah (terisi otomatis)
+                    DP dalam rupiah 
                   </label>
                   <input
                     id="dp-rupiah"
@@ -128,7 +182,7 @@ export default function Calculator() {
               <select
                 id="tenor"
                 value={tenor}
-                onChange={(e) => setTenor(e.target.value)}
+                onChange={handleTenorChange}
                 className={kelasInput}
               >
                 <option value="" className="bg-white text-(--navy)">
@@ -141,6 +195,15 @@ export default function Calculator() {
                 ))}
               </select>
             </div>
+
+            {error && (
+              <p
+                role="alert"
+                className="rounded-lg bg-red-500/15 px-3 py-2 text-sm text-red-200"
+              >
+                {error}
+              </p>
+            )}
 
             <button
               type="submit"
@@ -161,20 +224,28 @@ export default function Calculator() {
             <dl className="mt-4 space-y-4 text-sm">
               <div>
                 <dt className="text-(--cream)/70">Cicilan per Bulan</dt>
-                <dd className="mt-1 text-xl font-semibold">Rp 0</dd>
+                <dd className="mt-1 text-xl font-semibold">
+                  {formatRupiah(hasil ? hasil.cicilanPerBulan : 0)}
+                </dd>
               </div>
               <div className="border-t border-white/10 pt-4">
                 <dt className="text-(--cream)/70">Total Pembayaran</dt>
-                <dd className="mt-1 text-lg font-semibold">Rp 0</dd>
+                <dd className="mt-1 text-lg font-semibold">
+                  {formatRupiah(hasil ? hasil.totalPembayaran : 0)}
+                </dd>
               </div>
               <div className="space-y-3 border-t border-white/10 pt-4 text-xs">
                 <div className="flex items-center justify-between gap-3">
                   <dt className="text-(--cream)/70">Pokok Pinjaman</dt>
-                  <dd className="font-medium">Rp 0</dd>
+                  <dd className="font-medium">
+                    {formatRupiah(hasil ? hasil.pokok : 0)}
+                  </dd>
                 </div>
                 <div className="flex items-center justify-between gap-3">
                   <dt className="text-(--cream)/70">Total Bunga</dt>
-                  <dd className="font-medium">Rp 0</dd>
+                  <dd className="font-medium">
+                    {formatRupiah(hasil ? hasil.totalBunga : 0)}
+                  </dd>
                 </div>
               </div>
             </dl>
