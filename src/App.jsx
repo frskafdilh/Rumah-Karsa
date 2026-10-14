@@ -1,19 +1,26 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Keunggulan from './components/Keunggulan'
-import PropertySection from './components/PropertySection'
-import About from './components/About'
-import Calculator from './components/Calculator'
+import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import Keunggulan from "./components/Keunggulan.jsx";
+import PropertySection from "./components/PropertySection.jsx";
+import About from "./components/About.jsx";
+import Calculator from "./components/Calculator.jsx";
+import Visit from "./components/Visit.jsx";
+import Contact from "./components/Contact.jsx";
 
 export default function App() {
   return (
-    <main className="min-h-screen">
+    <>
       <Navbar />
-      <Hero />
-      <Keunggulan />
-      <PropertySection />
-      <About />
-      <Calculator />
-    </main>
-  )
+
+      <main className="min-h-screen">
+        <Hero />
+        <Keunggulan />
+        <PropertySection />
+        <About />
+        <Calculator />
+        <Visit />
+        <Contact />
+      </main>
+    </>
+  );
 }
