@@ -1,4 +1,6 @@
 import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import Keunggulan from "./components/Keunggulan.jsx";
 import PropertySection from "./components/PropertySection.jsx";
 import About from "./components/About.jsx";
 import Calculator from "./components/Calculator.jsx";
@@ -10,7 +12,9 @@ export default function App() {
     <>
       <Navbar />
 
-      <main>
+      <main className="min-h-screen">
+        <Hero />
+        <Keunggulan />
         <PropertySection />
         <About />
         <Calculator />
