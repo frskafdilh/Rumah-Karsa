@@ -1,4 +1,5 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
+import logoImg from '../assets/logo.png'
 
 const links = [
   { label: 'Beranda', href: '#home' },
@@ -16,32 +17,34 @@ export default function Navbar() {
   }
 
   return (
-    <header className="bg-(--cream) text-(--navy)">
-      <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-6 py-4">
-        <a
-          href="#home"
-          className="text-xl font-semibold text-inherit no-underline"
-          onClick={closeMenu}
-        >
-          Rumah Karsa
+    <header className="site-header">
+      <nav className="site-nav">
+        <a href="#home" className="site-brand" onClick={closeMenu}>
+          <img
+            src={logoImg}
+            alt="Logo Rumah Karsa"
+            className="brand-logo"
+            style={{ height: '48px', width: 'auto', display: 'block' }}
+          />
+          <span>Rumah Karsa</span>
         </a>
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-(--navy)/20 text-xl md:hidden"
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'}
-          aria-controls="primary-navigation"
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
+          aria-controls="primary-navigation"
         >
-          <span aria-hidden="true">{menuOpen ? '×' : '☰'}</span>
+          {menuOpen ? '×' : '☰'}
         </button>
 
         <div
           id="primary-navigation"
-          className={`${menuOpen ? 'flex' : 'hidden'} w-full flex-col gap-5 pt-5 md:flex md:w-auto md:flex-row md:items-center md:gap-6 md:pt-0`}
+          className={`site-menu ${menuOpen ? 'is-open' : ''}`}
         >
-          <ul className="m-0 flex list-none flex-col gap-4 p-0 md:flex-row md:items-center md:gap-6">
+          <ul className="site-links">
             {links.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="nav-link" onClick={closeMenu}>
@@ -51,7 +54,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <a href="#visit" className="btn-primary" onClick={closeMenu}>
+          <a href="#visit" className="btn-primary visit-button" onClick={closeMenu}>
             Jadwalkan Kunjungan
           </a>
         </div>

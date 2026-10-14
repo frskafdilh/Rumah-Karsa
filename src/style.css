@@ -1,9 +1,11 @@
 @import "tailwindcss";
+
 :root {
   --navy: #18344B;
   --cream: #F7F3ED;
   --caramel: #D0A078;
   --brown: #B68157;
+  --beige: #EFE7DB;
 
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   color: var(--navy);
@@ -13,17 +15,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
 }
+
 button,
 input,
 select,
@@ -57,6 +63,7 @@ textarea {
 .nav-link:hover {
   color: var(--brown);
 }
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -75,6 +82,7 @@ textarea {
   cursor: pointer;
   transition: background 180ms ease;
 }
+
 .btn-primary:hover {
   background: #dfb18b;
 }
@@ -91,6 +99,65 @@ textarea {
   color: var(--navy);
   font-size: 23px;
   cursor: pointer;
+}
+
+/* NAVBAR */
+
+.site-header {
+  position: relative;
+  z-index: 20;
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.site-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 84px;
+  margin: 0 auto;
+  padding: 10px clamp(20px, 5vw, 64px);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--navy);
+  font-size: 22px;
+  font-weight: 750;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-logo {
+  display: block;
+  flex-shrink: 0;
+  width: auto;
+  height: 48px;
+}
+
+.site-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.visit-button {
+  white-space: nowrap;
 }
 
 /* HERO */
@@ -274,6 +341,144 @@ textarea {
   font-size: 13px;
   line-height: 1.7;
   overflow-wrap: anywhere;
+}
+
+/* PROPERTI PILIHAN */
+
+.property-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 32px;
+}
+
+.property-title {
+  min-width: 0;
+}
+
+.property-eyebrow {
+  display: block;
+  margin: 0 0 12px;
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 2.5px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.property-title h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.property-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-label {
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.filter-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgb(24 52 75 / 12%);
+  border-radius: 999px;
+  background: #fffdfa;
+}
+
+.filter-chip {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.filter-chip:hover {
+  background: rgb(208 160 120 / 22%);
+}
+
+.filter-chip.active {
+  background: var(--navy);
+  color: #fff;
+}
+
+.filter-chip.active-sold {
+  background: var(--brown);
+  color: #fff;
+}
+
+.filter-chip.active-rent {
+  background: var(--caramel);
+  color: var(--navy);
+}
+
+.location-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 210px;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid rgb(24 52 75 / 12%);
+  border-radius: 999px;
+  background: #fffdfa;
+  color: var(--navy);
+}
+
+.location-search:focus-within {
+  border-color: var(--caramel);
+}
+
+.location-search svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.location-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--navy);
+  font-size: 13px;
+}
+
+.location-search input::placeholder {
+  color: #8a8a8a;
+}
+
+@media (max-width: 760px) {
+  .property-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .location-search {
+    width: 100%;
+  }
 }
 
 /* TABLET */
@@ -493,6 +698,7 @@ textarea {
     height: 27px;
   }
 }
+
 :focus-visible {
   outline: 2px solid var(--navy);
   outline-offset: 3px;
