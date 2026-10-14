@@ -173,19 +173,18 @@ function Visit() {
               aria-invalid={Boolean(errors.properti)}
               className={inputClass('properti')}
             >
-              <option value="">-- Pilih properti --</option>
-              <option>Medan Residence</option>
-              <option>The Horizon Residences</option>
-              <option>The Skyline Loft Presidence</option>
-              <option>The Skyline Premium Presidence</option>
-              <option>Cluster Aria Modern</option>
-              <option>The Prestige Cluster Home</option>
-              <option>BHG Minimalist Residence</option>
-              <option>The Paddy View Villa</option>
-              <option>The Oak Home</option>
-              <option>The Tropical Heaven</option>
-              <option>The Nordic House</option>
-              <option>Griya Asri Type 45</option>
+              <option value="Medan Residence">Medan Residence</option>
+              <option value="The Horizon Residences">The Horizon Residences</option>
+              <option value="The Skyline Loft Residence">The Skyline Loft Residence</option>
+              <option value="The Skyline Premium Residence">The Skyline Premium Residence</option>
+              <option value="Cluster Atria Modern">Cluster Atria Modern</option>
+              <option value="The Prestige Cluster Home">The Prestige Cluster Home</option>
+              <option value="BHG Minimalist Residence">BHG Minimalist Residence</option>
+              <option value="The Paddy View Villa">The Paddy View Villa</option>
+              <option value="The Oak Home">The Oak Home</option>
+              <option value="The Tropical Haven">The Tropical Haven</option>
+              <option value="The Nordic House">The Nordic House</option>
+              <option value="Griya Asri Type 45">Griya Asri Type 45</option>
             </select>
             {errors.properti && <p className={errorClass}>{errors.properti}</p>}
           </div>

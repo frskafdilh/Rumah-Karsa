@@ -31,13 +31,13 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="menu-toggle md:hidden"
+          className="menu-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'}
           aria-expanded={menuOpen}
           aria-controls="primary-navigation"
         >
-          <span aria-hidden="true">{menuOpen ? '×' : '☰'}</span>
+          {menuOpen ? '×' : '☰'}
         </button>
 
         <div

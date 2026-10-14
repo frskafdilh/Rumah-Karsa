@@ -158,7 +158,7 @@ export default function Calculator() {
                 </div>
                 <div>
                   <label htmlFor="dp-rupiah" className="sr-only">
-                    DP dalam rupiah
+                    DP dalam rupiah 
                   </label>
                   <input
                     id="dp-rupiah"
