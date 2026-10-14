@@ -24,7 +24,6 @@ export default function Navbar() {
             src={logoImg}
             alt="Logo Rumah Karsa"
             className="brand-logo"
-            style={{ height: '48px', width: 'auto', display: 'block' }}
           />
           <span>Rumah Karsa</span>
         </a>
